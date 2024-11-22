@@ -1,12 +1,13 @@
+//import { useState } from 'react';
 import './App.css';
-import TourList from './gallery';
+import TourGallery from './gallery';
 
 function App() {
   return (
     <div>
       <h1>Tours</h1>
-      {/* Render the TourList component */}
-      <TourList />
+      {/* Render the TourGallery component */}
+      <TourGallery/>
     </div>
   );
 }
