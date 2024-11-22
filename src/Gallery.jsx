@@ -33,8 +33,17 @@ return (
                 {/* Display tour image */}
                 <img src={tour.image} alt={tour.name} style={{ width: "200px", height: "150px", objectFit: "cover" }} />
                 <h3>{tour.name}</h3>
-                <p><strong>Price:</strong> ${tour.price}</p>
-                <p>{tour.info}</p>
+                <p><strong>Price:</strong> ${tour.price} </p>
+
+                {/* Read More Button */} 
+                <p> {tour.showFullDescription ? tour.info : `${tour.info.substring(0, 75)}`}
+                        <button onClick={() => {
+                            setTours(tours.map(tourDesc => tourDesc.id === tour.id ? { ...tourDesc, showFullDescription: !tourDesc.showFullDescription } : tourDesc ));
+                            }}> {tour.showFullDescription ? "Show Less" : "Read More"} </button>
+                </p>
+
+                {/* Not Interested Button */} 
+                <p> <button onClick={() => setTours(tours.filter(t => t.id !== tour.id))}> Not Interested </button> </p>
             </div>
         ))}
     </div>
