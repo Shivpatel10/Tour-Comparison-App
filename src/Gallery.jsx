@@ -8,17 +8,12 @@ function TourGallery() {
 
     //Fetch tour info from API
     useEffect( () => {
-        fetch('https://course-api.com/react-tours-project')
+        fetch('https://api.allorigins.win/get?url=https://course-api.com/react-tours-project')
 
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error("Failed to fetch data");}
-                return response.json();
-
-            })  
-            .then(data => {
-                setTours(data); //updates State with data
-                setLoading(false); //stops loading after data fetched
+           .then(response => response.json())
+           .then(data => {
+                setTours(JSON.parse(data.contents)); //updates State with data
+                setLoading(false);  //stops loading after data fetched
             })
             .catch((error) => {
                 setError(error.message); // updates error State if failed fetch
@@ -28,24 +23,21 @@ function TourGallery() {
 
 //  Loading & Error Messsages to update user.
 if (loading) return <p>Please Wait, Loading...</p>; 
-if (error) return <p>Error, Failed!</p>;
+if (error) return <p>Error, Failed! {error} </p>;
 
 
 return (
-    <div>
-        <h2>Tour Packages</h2>
-        <ul>
-            {tours.map((tour) => (
-                <li key={tour.id}>
-                    {/* Display tour images */}
-                    <img src={tour.image} alt={tour.name} style={{ width: "200px", height: "150px" }} />
+    <div className="gallery">
+        {tours.map((tour) => (
+            <div key={tour.id} style={{ marginBottom: "20px", border: "1px solid #ddd", padding: "10px" }}>
+                {/* Display tour image */}
+                <img src={tour.image} alt={tour.name} style={{ width: "200px", height: "150px", objectFit: "cover" }} />
                 <h3>{tour.name}</h3>
-                    <p><strong>Price:</strong> ${tour.price}</p>
-                    <p>{tour.info}</p>
-                </li>
-            ))}
-        </ul>
+                <p><strong>Price:</strong> ${tour.price}</p>
+                <p>{tour.info}</p>
+            </div>
+        ))}
     </div>
-)};
+);}
 
 export default TourGallery;
