@@ -1,0 +1,43 @@
+/* tour cards boxs */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+  }
+  
+/* individual tour card */
+  .tour-card {
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    text-align: center;
+  }
+  
+/* image styling */
+  .tour-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+/* headings and text */
+  .tour-card h3 {
+    margin: 0.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .tour-card p {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+  }
+  
+/* buttons */
+  .tour-card button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+  }
+  
